@@ -1,0 +1,57 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+NORMAL='\033[0m'
+echo -en "${GREEN}"
+dirproject="$(pwd)"
+echo -en "${GREEN}Путь установки: $dirproject${NORMAL}\n"
+mkdir app
+cd app
+mkdir scss css fonts img js
+cd js
+touch index.js
+cd ..
+cd css
+touch style.css
+cd ..
+cd scss
+touch style.scss
+cd ../..
+touch index.html
+echo -en "${GREEN}Инициализация проекта${NORMAL}\n"
+npm init -y
+echo -en "${GREEN}Локальная установка gulp${NORMAL}\n"
+npm i gulp --save-dev
+echo -en "${GREEN}Локальная установка gulp-sass - преобразование scss|sass в css${NORMAL}\n"
+npm i gulp-sass --save-dev
+echo -en "${GREEN}Локальная установка gulp-concat - конкатенация (слияние) файлов${NORMAL}\n"
+npm i gulp-concat --save-dev
+echo -en "${GREEN}Локальная установка gulp-uglifyjs - минификация (сжатие) JavaScript файлов${NORMAL}\n"
+npm i gulp-uglifyjs --save-dev
+echo -en "${GREEN}Локальная установка gulp-cssnano - минификация (сжатие) CSS файлов${NORMAL}\n"
+npm i gulp-cssnano --save-dev
+echo -en "${GREEN}Локальная установка gulp-rename - переименование файлов${NORMAL}\n"
+npm i gulp-rename --save-dev
+echo -en "${GREEN}Локальная установка del - удаление файлов${NORMAL}\n"
+npm i del --save-dev
+echo -en "${GREEN}Локальная установка gulp-imagemin - минификация (сжатие) файлов изображений${NORMAL}\n"
+npm i gulp-imagemin --save-dev
+echo -en "${GREEN}Локальная установка gulp-imagemin - минификация (сжатие) файлов изображений${NORMAL}\n"
+npm i imagemin-pngquant --save-dev
+echo -en "${GREEN}Локальная установка gulp-cache${NORMAL}\n"
+npm i gulp-cache --save-dev
+echo -en "${GREEN}Локальная установка gulp-autoprefixer - файлов${NORMAL}\n"
+npm i gulp-autoprefixer --save-dev
+echo -en "${GREEN}Локальная установка browser-sync - локального сервера для браузеров - live reload${NORMAL}\n"
+npm i browser-sync --save-dev
+echo -en "${GREEN}Полный список установленных в проекте локальных пакетов верхного уровня${NORMAL}\n"
+npm list --depth=0
+if [ -w .gitignore ]
+then
+echo -en "${GREEN}.gitignore существует и доступен для записи${NORMAL}\n"
+echo "node_modules" >> .gitignore
+echo -en "${GREEN}node_modules добавлен в .gitignore${NORMAL}\n"
+else
+echo "node_modules" > .gitignore
+echo -en "${GREEN}.gitignore создан и node_modules добавлен в .gitignore${NORMAL}\n"
+fi
